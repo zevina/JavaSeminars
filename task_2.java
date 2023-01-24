@@ -1,3 +1,5 @@
+//  ----- минимальное количество команд -----
+
 // Решено совместно с Рябовым Андреем
 
 /**
@@ -21,7 +23,7 @@
 // import java.util.List;
 import java.util.*;
 
-public class task {
+public class task_2 {
 
   public static void main(String[] args) {
     int a = Library.getNumberByUser("Введите число a: ");
