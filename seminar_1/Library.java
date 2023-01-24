@@ -1,4 +1,6 @@
 
+package seminar_1;
+
 import java.util.*;
 
 public class Library {
@@ -13,7 +15,7 @@ public class Library {
    * @param text Сообщение для пользователя
    * @return число
    */
-  static int getNumberByUser(String text) {
+  public static int getNumberByUser(String text) {
     System.out.print(text);
     return input.nextInt();
   }

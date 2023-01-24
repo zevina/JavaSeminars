@@ -1,3 +1,5 @@
+package hw1;
+
 //  ----- минимальное количество команд -----
 
 // Решено совместно с Рябовым Андреем
@@ -22,6 +24,8 @@
 // import java.util.ArrayList;
 // import java.util.List;
 import java.util.*;
+
+import seminar_1.Library;
 
 public class task_2 {
 
