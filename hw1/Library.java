@@ -1,6 +1,8 @@
 
 package hw1;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class Library {
@@ -116,3 +118,9 @@ public class Library {
   }
 
 }
+
+// try(FileWriter fileWriter = new FileWriter("file.txt")) {
+// fileWriter.append("TEST ".repeat(100)); // что-то, что нужно добавить в фалй
+// } catch (IOException ex) {
+// System.out.println("Не удалось открыть файл");
+// }
