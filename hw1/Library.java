@@ -117,6 +117,8 @@ public class Library {
 
 }
 
+// Способ работы с файлом, когда происходит автоматическое закрытие файла
+
 // import java.io.FileWriter;
 // import java.io.IOException;
 
