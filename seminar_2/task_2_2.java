@@ -14,6 +14,7 @@ public class task_2_2 {
 
     System.out.println(compressString(line));
 
+    scaner.close();
   }
 
   public static String compressString(String userString) {
