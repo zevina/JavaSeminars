@@ -1,0 +1,4 @@
+{"name":"Ivanov","country":"Russia","city":"Moscow","age":"null"}
+{"name":"Ivanov","country":"Russia","city":"null","age":"55"}
+{"name":"Ivanov","country":"null","city":"Novosibirsk","age":"30"}
+{"name":"null","country":"Russia","city":"Saint Petersburg","age":"4"}
