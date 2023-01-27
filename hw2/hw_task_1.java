@@ -56,17 +56,16 @@ public class hw_task_1 {
      * @return двумерный массив данных
      */
     public static String[][] formatData(String data) {
-        String formatData = data.substring(1, data.length() - 1);
+        String formatData = data.replace("{", "");
+        formatData = formatData.replace("}", "");
+        formatData = formatData.replace("\"", "");
+        
         String[] arrData = formatData.split(",");
-        for (int i = 0; i < arrData.length; i++) {
-            arrData[i] = arrData[i].substring(1, arrData[i].length() - 1);
-        }
-
         String[][] resarr = new String[arrData.length][2];
         String[] parts;
         int i = 0;
         for (int j = 0; j < resarr.length; j++) {
-            parts = arrData[i].split("\":\"");
+            parts = arrData[i].split(":");
             i++;
             for (int k = 0; k < resarr[1].length; k++) {
                 resarr[j][k] = parts[k];
