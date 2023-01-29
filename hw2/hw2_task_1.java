@@ -1,4 +1,3 @@
-
 // В файле содержится строка с исходными данными в такой форме:
 
 //             {"name":"Ivanov","country":"Russia","city":"Moscow","age":"null"}
@@ -12,7 +11,7 @@
 // Значения null не включаются в запрос.
 // 
 // 
-//           РЕШЕНИЕ ДЛЯ ФАЙЛА С НЕСКОЛЬКИМИ СТРОКАМИ (для одной строки см. hw_task_1.java)
+//                 РЕШЕНИЕ ДЛЯ ФАЙЛА С ОДНОЙ СТРОКОЙ (для нескольких строк см. hw_task_a.java)
 
 package hw2;
 
@@ -22,36 +21,35 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class hw_task_a {
+public class hw2_task_1 {
 
     public static void main(String[] args) {
 
-        List<String> arrayList = getDataFromFile("hw2/file_2.txt");
-        String sqlRequest;
-        for (String string : arrayList) {
-            sqlRequest = createSQLrequest(formatData(string));
-            System.out.println(sqlRequest);
-        }
-
+        String fileData = getDataFromFile("hw2/file_1.txt");
+        String sqlRequest = createSQLrequest(formatData(fileData));
+        System.out.println(sqlRequest);
     }
 
     /**
      * Метод считывает данные из файла
      * 
      * @param path путь к файлу
-     * @return список строк данных
+     * @return строка данных
      */
-    public static List<String> getDataFromFile(String path) {
-        List<String> arrList = new ArrayList<>();
+    public static String getDataFromFile(String path) {
+        
+        StringBuilder resultLine = new StringBuilder();
+        
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                arrList.add(line);
+                resultLine.append(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return arrList;
+        
+        return resultLine.toString();
     }
 
     /**
@@ -61,11 +59,12 @@ public class hw_task_a {
      * @return двумерный массив данных
      */
     public static String[][] formatData(String data) {
-        String formatData = data.replace("{", "");
-        formatData = formatData.replace("}", "");
-        formatData = formatData.replace("\"", "");
         
-        String[] arrData = formatData.split(",");
+        data = data.replace("{", "");
+        data = data.replace("}", "");
+        data = data.replace("\"", "");
+
+        String[] arrData = data.split(",");
         String[][] resarr = new String[arrData.length][2];
         String[] parts;
         int i = 0;
@@ -76,6 +75,7 @@ public class hw_task_a {
                 resarr[j][k] = parts[k];
             }
         }
+
         return resarr;
     }
 
@@ -86,9 +86,11 @@ public class hw_task_a {
      * @return строка SQL запроса
      */
     public static String createSQLrequest(String[][] arrayData) {
+
         StringBuilder sqlRequest = new StringBuilder();
         sqlRequest.append("SELECT*FROM students WHERE ");
         List<String> resultList = new ArrayList<>();
+        
         for (int j = 0; j < arrayData.length; j++) {
             if (!arrayData[j][1].equals("null")) {
                 String part = String.format("%s=\"%s\"", arrayData[j][0], arrayData[j][1]);
@@ -96,8 +98,8 @@ public class hw_task_a {
             }
         }
         sqlRequest.append(String.join(" AND ", resultList));
-        return sqlRequest.toString();
 
+        return sqlRequest.toString();
     }
 
 }

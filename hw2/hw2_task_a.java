@@ -1,3 +1,4 @@
+
 // В файле содержится строка с исходными данными в такой форме:
 
 //             {"name":"Ivanov","country":"Russia","city":"Moscow","age":"null"}
@@ -11,7 +12,7 @@
 // Значения null не включаются в запрос.
 // 
 // 
-//                 РЕШЕНИЕ ДЛЯ ФАЙЛА С ОДНОЙ СТРОКОЙ (для нескольких строк см. hw_task_a.java)
+//           РЕШЕНИЕ ДЛЯ ФАЙЛА С НЕСКОЛЬКИМИ СТРОКАМИ (для одной строки см. hw_task_1.java)
 
 package hw2;
 
@@ -21,32 +22,37 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class hw_task_1 {
+public class hw2_task_a {
 
     public static void main(String[] args) {
 
-        String fileData = getDataFromFile("hw2/file_1.txt");
-        String sqlRequest = createSQLrequest(formatData(fileData));
-        System.out.println(sqlRequest);
+        List<String> arrayList = getDataFromFile("hw2/file_2.txt");
+        String sqlRequest;
+        for (String string : arrayList) {
+            sqlRequest = createSQLrequest(formatData(string));
+            System.out.println(sqlRequest);
+        }
+
     }
 
     /**
      * Метод считывает данные из файла
      * 
      * @param path путь к файлу
-     * @return строка данных
+     * @return список строк данных
      */
-    public static String getDataFromFile(String path) {
-        StringBuilder resultLine = new StringBuilder();
+    public static List<String> getDataFromFile(String path) {
+        
+        List<String> arrList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                resultLine.append(line);
+                arrList.add(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return resultLine.toString();
+        return arrList;
     }
 
     /**
@@ -56,11 +62,11 @@ public class hw_task_1 {
      * @return двумерный массив данных
      */
     public static String[][] formatData(String data) {
-        String formatData = data.replace("{", "");
-        formatData = formatData.replace("}", "");
-        formatData = formatData.replace("\"", "");
+        data = data.replace("{", "");
+        data = data.replace("}", "");
+        data = data.replace("\"", "");
         
-        String[] arrData = formatData.split(",");
+        String[] arrData = data.split(",");
         String[][] resarr = new String[arrData.length][2];
         String[] parts;
         int i = 0;
@@ -71,7 +77,6 @@ public class hw_task_1 {
                 resarr[j][k] = parts[k];
             }
         }
-
         return resarr;
     }
 
@@ -97,4 +102,3 @@ public class hw_task_1 {
     }
 
 }
-    
