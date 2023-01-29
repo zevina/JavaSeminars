@@ -64,7 +64,7 @@ public class hw2_task_2 {
 
         Logger logger = Logger.getLogger(hw2_task_2.class.getName());
 
-        FileHandler fh = new FileHandler("hw2/log.log");
+        FileHandler fh = new FileHandler("hw2/log.txt");
         logger.addHandler(fh);
 
         SimpleFormatter sFormat = new SimpleFormatter();
