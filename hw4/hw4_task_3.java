@@ -70,7 +70,13 @@ public class hw4_task_3 {
                 }
             }
         }
-        res = stack.pop();
-        return res;
+        if (stack.size() == 1) {
+            res = stack.pop();
+            return res;
+        }
+        else {
+            System.out.println("Выражение записано некорректно!");
+            throw new IllegalStateException();
+        }
     }
 }
