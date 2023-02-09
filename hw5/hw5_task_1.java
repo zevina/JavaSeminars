@@ -8,7 +8,7 @@ public class hw5_task_1 {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Введите данные в формате: фамилия имя:номер телефона. Для остановки введите stop: ");
+        System.out.println("Введите данные в формате \"фамилия имя:номер телефона\". Для остановки введите stop: ");
         Map<String, ArrayList<String>> nameToNumbers = fillMap();
 
         printMap(nameToNumbers);
