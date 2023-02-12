@@ -48,7 +48,7 @@ public class Model {
                 laptop = new Laptop("Lenovo",
                                 "Legion 5 Pro",
                                 LocalDate.of(2021, 11, 5),
-                                "AMD Ryzen 7 6800H", 32, 2048, "без ОС", 185_000);
+                                "AMD Ryzen 7 6800H", 32, 2048, "Windows 11", 185_000);
                 laptop.addColor("Black");
                 laptop.addColor("Blue");
                 laptops.add(laptop);
